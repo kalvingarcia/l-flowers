@@ -386,7 +386,7 @@ gl.viewport(0, 0, canvas.width, canvas.height);
 gl.clearColor(0.5, 0.5, 0.7, 1.0);
 gl.clear(gl.COLOR_BUFFER_BIT);
 
-const birthday = prompt("Type in your birthday to see what kinda of flowers you get!", "Format: MMDD");
+const birthday = prompt("Type in your birthday to see what kinda of flowers you get! (Format: MMDD)");
 
 const conversion = {
     "0": "2",
