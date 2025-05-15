@@ -14,7 +14,7 @@ export function generateLSystem(axiom, rules, iterations) {
 export function interpretLSystem(instructions, angle, step = 10) {
     const radians = (degrees) => (degrees * Math.PI) / 180;
     let pos = {x: 0, y: 0};
-    let currentAngle = 90;
+    let currentAngle = -90;
     let stack = [];
     let branches = [];
     let flowers = [];

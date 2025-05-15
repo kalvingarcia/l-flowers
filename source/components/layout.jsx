@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {tss} from './common/theme';
 import {generateLSystem, interpretLSystem} from '../l-system';
 import LSystemRenderer from './l-system-renderer';
+import ControlPanel from './control-panel';
 
 const useStyles = tss.create(({theme}) => ({
     content: {
+        width: "100%",
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         alignContent: "center",
@@ -27,16 +30,19 @@ export default function Layout({}) {
         F: 'F',
         L: 'L'
     };
+    const axiom = 'SB';
 
-    const axiom = 'S';
-    const angle = 25;
-    const iterations = 5;
-    const step = 10;
+    const [angle, setAngle] = useState(30);
+    const [iterations, setIterations] = useState(6);
+    const [step, setStep] = useState(8);
 
     const instructions = generateLSystem(axiom, rules, iterations);
 
     const {classes} = useStyles({});
     return (
-        <LSystemRenderer {...interpretLSystem(instructions, angle, step)} />
+        <div className={classes.content}>
+            <ControlPanel angle={angle} setAngle={setAngle} iterations={iterations} setIterations={setIterations} step={step} setStep={setStep} />
+            <LSystemRenderer {...interpretLSystem(instructions, angle, step)} />
+        </div>
     );
 }
